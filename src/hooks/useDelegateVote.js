@@ -27,10 +27,10 @@ const useDelegateVote = (address) => {
             console.log("receipt: ", receipt);
 
             if (receipt.status) {
-                return toast.success("vote successfull!");
+                return toast.success("Delegated successfully!");
             }
 
-            toast.error("vote failed!");
+            toast.error("Delegation failed!");
         } catch (error) {
             // console.log(error);
             let errorText;

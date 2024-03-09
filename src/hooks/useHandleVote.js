@@ -32,7 +32,7 @@ const useHandleVote = () => {
             // console.log(error);
             let errorText;
             if (error.reason === "Has no right to vote") {
-                errorText = "You have not right to vote!";
+                errorText = "You have no right to vote!";
             } else if (error.reason === "Already voted.") {
                 errorText = "You have already voted!";
             } else {

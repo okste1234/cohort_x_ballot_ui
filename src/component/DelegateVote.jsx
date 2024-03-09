@@ -1,10 +1,10 @@
 import { Box, Button, Card, Flex, Text, TextField } from "@radix-ui/themes";
 import { useState } from "react";
-import useHandleVote from "../hooks/useHandleVote";
+import useDelegateVote from "../hooks/useDelegateVote";
 
 const DelegateVote = () => {
     const [addressTo, SetaddressTo] = useState("");
-    const handleDelegate = useHandleVote(addressTo)
+    const handleDelegate = useDelegateVote(addressTo)
 
     return (
         <Card size="2" style={{ width: 425 }}>

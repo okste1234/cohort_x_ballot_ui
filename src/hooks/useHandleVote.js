@@ -1,4 +1,4 @@
-// import { useCallback } from "react";
+import { useCallback } from "react";
 import { useWeb3ModalAccount, useWeb3ModalProvider } from "@web3modal/ethers/react";
 import { isSupportedChain } from "../utils";
 import { getProvider } from "../constants/providers";
@@ -9,7 +9,7 @@ const useHandleVote = () => {
     const { chainId } = useWeb3ModalAccount();
     const { walletProvider } = useWeb3ModalProvider();
 
-    return (async (id) => {
+    return useCallback(async (id) => {
         if (!isSupportedChain(chainId)) return toast.error("Wrong network");
         const readWriteProvider = getProvider(walletProvider);
         const signer = await readWriteProvider.getSigner();
@@ -32,16 +32,16 @@ const useHandleVote = () => {
             // console.log(error);
             let errorText;
             if (error.reason === "Has no right to vote") {
-                errorText = "you have no right to vote!";
+                errorText = "You have no right to vote!";
             } else if (error.reason === "Already voted.") {
-                errorText = "you have voted already!";
+                errorText = "You have already voted!";
             } else {
-                errorText = "an unknown error occured!";
+                errorText = "An unknown error occured!";
             }
 
             toast.error(`Error: ${errorText}`);
         }
-    });
+    }, [chainId, walletProvider]);
 }
 
 export default useHandleVote

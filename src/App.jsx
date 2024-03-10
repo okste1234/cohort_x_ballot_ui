@@ -30,7 +30,7 @@ function App() {
                             <Proposal
                                 key={index}
                                 name={item.name}
-                                handleVote={() => handleVote(index)}
+                                handleVote={handleVote}
                                 id={index}
                                 voteCount={Number(item.voteCount)}
                             />
